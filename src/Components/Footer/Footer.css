@@ -1,0 +1,54 @@
+.footer-container {
+  min-height: 30vh;
+  background-color: #191919;
+}
+.footer-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.left-footer .brand {
+  height: 100%;
+  width: 100%;
+  text-align: left;
+}
+.left-footer .brand img {
+  width: 40%;
+  margin-top: 40px;
+}
+.copyright span {
+  display: block;
+  color: gray;
+  margin-top: 20px;
+  text-align: left;
+  font-size: 14px;
+}
+.right-footer {
+  margin-top: 40px;
+}
+.right-footer .top {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 100%;
+  align-items: center;
+}
+.right-footer .top .left a,
+.right-footer .top .right a {
+  text-align: left;
+  margin: 5px;
+  display: block;
+  color: gray;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: bold;
+}
+.bottom {
+  margin-top: 20px;
+}
+.bottom a {
+  padding: 5px 20px;
+  color: gray;
+  font-size: 13px;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 20px;
+}

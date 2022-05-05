@@ -1,0 +1,40 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  padding: 0 50px;
+}
+
+.navbar .brand {
+  height: 30px;
+}
+
+.navbar .brand img {
+  height: 100%;
+}
+.navbar .links {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  font-weight: bold;
+}
+.links .icon {
+  margin-right: 30px;
+  color: #000;
+  cursor: pointer;
+}
+.links a {
+  margin-right: 30px;
+  text-decoration: none;
+  color: #000;
+}
+.links button {
+  background-color: #f91944;
+  border: none;
+  padding: 5px 20px;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 20px;
+  cursor: pointer;
+}

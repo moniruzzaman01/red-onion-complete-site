@@ -1,0 +1,35 @@
+.hero-section {
+  position: relative;
+}
+.hero-section img {
+  width: 100%;
+}
+.hero-section .banner-content {
+  width: 100%;
+  justify-content: center;
+  position: absolute;
+  top: 30%;
+}
+.banner-content h2 {
+  font-size: 30px;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+.search-container input {
+  border: none;
+  padding: 7px 20px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+.search-container input:first-child {
+  width: 220px;
+}
+.search-container input:first-child:focus {
+  outline: none;
+}
+.search-container input:last-child {
+  margin-left: -25px;
+  background-color: #f91944;
+  color: #fff;
+  cursor: pointer;
+}
