@@ -1,21 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import useGetAllData from "../../hooks/useGetAllData";
 
 const BreakfastItems = () => {
   const navigate = useNavigate();
-  const [breakfastItems, setBreakfastItems] = useState([]);
-
-  useEffect(() => {
-    fetch("breakfast.json")
-      .then((res) => res.json())
-      .then((data) => setBreakfastItems(data));
-  }, []);
+  const [breakfastItems] = useGetAllData("breakfast");
 
   return (
     <>
       <div className="items">
-        {breakfastItems.map((item) => (
-          <div onClick={() => navigate("/item-details")} className="item">
+        {breakfastItems.map((item, key) => (
+          <div
+            key={key}
+            onClick={() => navigate("/item-details")}
+            className="item"
+          >
             <div className="img-container">
               <img src={item.img} alt="" />
             </div>
