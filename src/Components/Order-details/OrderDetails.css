@@ -88,11 +88,14 @@ span {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-left: 20px;
   padding: 5px;
 }
-.cart-item .qnty span {
+.qnty span {
+  display: inline-block;
+  margin-top: -5px;
+  font-size: 25px;
   font-weight: bold;
+  cursor: pointer;
 }
 .receipt {
   margin-top: 20px;

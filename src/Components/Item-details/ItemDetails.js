@@ -1,31 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./ItemDetails.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import itemDetailsImg from "../../images/dinner/dinner5.png";
 import slide1 from "../../images/breakfast/breakfast1.png";
 import slide2 from "../../images/breakfast/breakfast2.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const ItemDetails = () => {
+  const { id } = useParams();
   const navigate = useNavigate();
+  const [item, setItem] = useState({});
+
+  useEffect(() => {
+    fetch("http://localhost:5000/breakfastById", {
+      method: "post",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ id }),
+    })
+      .then((res) => res.json())
+      .then((data) => setItem(data));
+  }, [id]);
 
   return (
     <div className="item-details-container container">
       <div className="item-details">
         <div className="item-info">
-          <h2>Light Breakfast</h2>
-          <span>
-            Gay one the what walk then she. Demesne mention promise you justice
-            arrived way. Amazing foods are Or and increasing to in especially
-            inquietude companions acceptance admiration. Outweight it families
-            distance wandered ye
-          </span>
+          <h2>{item.name}</h2>
+          <span>{item.desc}</span>
           <div className="price-and-qnty">
-            <h3>$55</h3>
+            <h3>${item.price}</h3>
             <div className="qnty">
               <span>-</span>
-              <span>1</span>
+              <span>{item.quantity}</span>
               <span>+</span>
             </div>
           </div>
@@ -43,7 +51,7 @@ const ItemDetails = () => {
           </div>
         </div>
         <div className="item-img">
-          <img src={itemDetailsImg} alt="" />
+          <img src={item.img} alt="" />
         </div>
       </div>
     </div>

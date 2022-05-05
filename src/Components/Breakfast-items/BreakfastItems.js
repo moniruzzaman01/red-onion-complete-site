@@ -12,7 +12,7 @@ const BreakfastItems = () => {
         {breakfastItems.map((item, key) => (
           <div
             key={key}
-            onClick={() => navigate("/item-details")}
+            onClick={() => navigate(`/item-details/${item._id}`)}
             className="item"
           >
             <div className="img-container">
