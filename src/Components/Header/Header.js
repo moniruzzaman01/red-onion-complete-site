@@ -3,7 +3,7 @@ import "./Header.css";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../images/New folder/logo2.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { faShoppingCart, faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import { signOut } from "firebase/auth";
@@ -23,7 +23,10 @@ const Header = () => {
           <FontAwesomeIcon icon={faShoppingCart} />
         </div>
         {authUser ? (
-          <button onClick={() => signOut(auth)}>Logout</button>
+          <div onClick={() => signOut(auth)} className="icon">
+            {authUser.displayName.split(" ")[0]}{" "}
+            <FontAwesomeIcon icon={faSignOut} />
+          </div>
         ) : (
           <>
             <Link to="/login">Login</Link>
