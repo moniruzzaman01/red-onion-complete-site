@@ -7,6 +7,7 @@ import slide2 from "../../images/breakfast/breakfast2.png";
 import { useParams } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
+import { toast } from "react-toastify";
 
 const ItemDetails = () => {
   const { id } = useParams();
@@ -29,7 +30,6 @@ const ItemDetails = () => {
 
   const handleAddBtn = () => {
     item["email"] = user.email;
-    console.log("itme", item);
     fetch("http://localhost:5000/cart", {
       method: "put",
       headers: {
@@ -38,7 +38,14 @@ const ItemDetails = () => {
       body: JSON.stringify(item),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        if (data.modifiedCount === 1) {
+          toast("item modified");
+        }
+        if (data.upsertedCount === 1) {
+          toast("item added to cart");
+        }
+      });
   };
 
   const handleIncrease = () => {

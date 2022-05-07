@@ -8,10 +8,13 @@ import Login from "./Components/Login/Login";
 import OrderDetails from "./Components/Order-details/OrderDetails";
 import RequireAuth from "./Components/Require-auth/RequireAuth";
 import SignUp from "./Components/Sign-up/SignUp";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <div className="App">
+      <ToastContainer />
       <Header />
       <Routes>
         <Route path="/" element={<Home />}></Route>

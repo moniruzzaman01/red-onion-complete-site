@@ -12,7 +12,6 @@ const OrderDetails = () => {
   for (const item of items) {
     totalItem += item.quantity;
     totalFee += parseFloat(item.price) * parseInt(item.quantity);
-    console.log(item);
   }
   const tax = totalFee * 0.1;
   const grandTotal = totalFee + tax;
@@ -23,27 +22,59 @@ const OrderDetails = () => {
       .then((data) => setItems(data));
   }, [user]);
 
+  const handleOrderForm = (event) => {
+    event.preventDefault();
+    console.log("clicked");
+  };
+
   return (
     <div className="order-details-container container">
       <div className="order-details">
         <div className="delivery-details">
           <h2>Edit Delivery Details</h2>
-          <input type="text" name="" id="" placeholder="Deliver to door" />
-          <br />
-          <input type="text" name="" id="" placeholder="107 Rd No 8" />
-          <br />
-          <input type="text" name="" id="" placeholder="Flat, suite or floor" />
-          <br />
-          <input type="text" name="" id="" placeholder="Business Name" />
-          <br />
-          <input
-            type="text"
-            name=""
-            id=""
-            placeholder="Add delivery instructor"
-          />
-          <br />
-          <input type="submit" value="Save & Continue" />
+          <form onSubmit={handleOrderForm}>
+            <input
+              type="text"
+              name=""
+              id=""
+              placeholder="Deliver to door"
+              required
+            />
+            <br />
+            <input
+              type="text"
+              name=""
+              id=""
+              placeholder="107 Rd No 8"
+              required
+            />
+            <br />
+            <input
+              type="text"
+              name=""
+              id=""
+              placeholder="Flat, suite or floor"
+              required
+            />
+            <br />
+            <input
+              type="text"
+              name=""
+              id=""
+              placeholder="Business Name"
+              required
+            />
+            <br />
+            <input
+              type="text"
+              name=""
+              id=""
+              placeholder="Add delivery instructor"
+              required
+            />
+            <br />
+            <input type="submit" value="Save & Continue" />
+          </form>
         </div>
         <div style={{ minWidth: "350px" }} className="cart-items-container">
           <div className="info">
@@ -69,6 +100,13 @@ const OrderDetails = () => {
                 </div>
               </div>
             ))}
+            {items.length === 0 ? (
+              <h3 className="d-flex justify-content-center  mt-5">
+                Items not Added
+              </h3>
+            ) : (
+              ""
+            )}
           </div>
           <div className="receipt">
             <p>
@@ -86,7 +124,7 @@ const OrderDetails = () => {
             <h4>
               Total: <span>${grandTotal.toFixed(2)}</span>
             </h4>
-            <button>Place Order</button>
+            {/* <button>Place Order</button> */}
           </div>
         </div>
       </div>
