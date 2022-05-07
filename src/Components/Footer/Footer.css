@@ -31,6 +31,32 @@
   height: 100%;
   align-items: center;
 }
+@media screen and (max-width: 599px) {
+  .footer-items {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .left-footer .brand {
+    text-align: center;
+    height: 60%;
+  }
+  .copyright {
+    margin-left: 100px;
+  }
+  .right-footer {
+    margin: 0;
+  }
+  .right-footer .top {
+    padding: 20px 0;
+    height: 55%;
+  }
+  .right-footer .bottom {
+    padding: 0;
+    display: flex;
+  }
+  .bottom a {
+    display: block;
+  }
+}
 .right-footer .top .left a,
 .right-footer .top .right a {
   text-align: left;

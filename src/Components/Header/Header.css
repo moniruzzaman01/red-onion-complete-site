@@ -20,9 +20,19 @@
   font-weight: bold;
 }
 .links .icon {
-  margin-right: 30px;
   color: #000;
   cursor: pointer;
+}
+.links .shopping {
+  margin-right: 30px;
+}
+@media screen and (max-width: 599px) {
+  .navbar {
+    padding: 0 10px;
+  }
+  .links .shopping {
+    margin-right: 20px;
+  }
 }
 .links a {
   margin-right: 30px;

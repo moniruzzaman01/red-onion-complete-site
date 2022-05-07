@@ -76,7 +76,7 @@ const OrderDetails = () => {
             <input type="submit" value="Save & Continue" />
           </form>
         </div>
-        <div style={{ minWidth: "350px" }} className="cart-items-container">
+        <div className="cart-items-container">
           <div className="info">
             <p>
               From <span>Fulshan Plaza Restura GPR</span>

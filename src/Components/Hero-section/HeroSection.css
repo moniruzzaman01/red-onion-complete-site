@@ -21,6 +21,13 @@
   border-radius: 20px;
   font-size: 12px;
 }
+
+@media screen and (max-width: 599px) {
+  .banner-content h2 {
+    font-size: 18px;
+  }
+}
+
 .search-container input:first-child {
   width: 220px;
 }

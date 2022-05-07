@@ -23,6 +23,14 @@
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px 50px;
 }
+@media screen and (max-width: 599px) {
+  .titles {
+    margin: 20px 0 5px 0;
+  }
+  .items {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 .item {
   padding: 20px 5px;
   border-radius: 10px;

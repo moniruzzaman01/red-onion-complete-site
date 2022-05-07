@@ -7,6 +7,18 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
+@media screen and (max-width: 599px) {
+  .item-details {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .item-info {
+    order: 2;
+  }
+  .item-img {
+    order: 1;
+    margin-top: 30px;
+  }
+}
 .item-info {
   margin: auto;
   text-align: left;
