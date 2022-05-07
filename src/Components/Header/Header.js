@@ -19,7 +19,7 @@ const Header = () => {
         </Link>
       </div>
       <div className="links">
-        <div className="icon">
+        <div onClick={() => navigate("/order-details")} className="icon">
           <FontAwesomeIcon icon={faShoppingCart} />
         </div>
         {authUser ? (

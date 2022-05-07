@@ -40,8 +40,9 @@
   padding: 5px;
 }
 .qnty span {
+  margin-bottom: 2px;
   display: inline-block;
-  margin-top: -5px;
+  line-height: 25px;
   font-size: 25px;
   font-weight: bold;
   cursor: pointer;

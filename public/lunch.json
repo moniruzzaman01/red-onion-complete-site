@@ -3,36 +3,42 @@
     "img": "https://i.ibb.co/2jwvmGq/lunch1.png",
     "name": "Healthy Meal Plan",
     "desc": "How we dream about our future",
-    "price": "23.99"
+    "price": "23.99",
+    "quantity": "0"
   },
   {
     "img": "https://i.ibb.co/sy8ms2G/lunch2.png",
     "name": "Fried Chicken Bento",
     "desc": "How we dream about our future",
-    "price": "9.99"
+    "price": "9.99",
+    "quantity": "0"
   },
   {
     "img": "https://i.ibb.co/NrjgpxD/lunch3.png",
     "name": "Tarragon-Rubbed-Salmon",
     "desc": "How we dream about our future",
-    "price": "3.99"
+    "price": "3.99",
+    "quantity": "0"
   },
   {
     "img": "https://i.ibb.co/k5vkDdy/lunch4.png",
     "name": "Indian Lunch",
     "desc": "How we dream about our future",
-    "price": "8.99"
+    "price": "8.99",
+    "quantity": "0"
   },
   {
     "img": "https://i.ibb.co/k5CTrHK/lunch5.png",
     "name": "Beef Steak",
     "desc": "How we dream about our future",
-    "price": "15.99"
+    "price": "15.99",
+    "quantity": "0"
   },
   {
     "img": "https://i.ibb.co/j5bZ2Vz/lunch6.png",
     "name": "Honey-Soy-Glazed Salmon with Peppers",
     "desc": "How we dream about our future",
-    "price": "7.99"
+    "price": "7.99",
+    "quantity": "0"
   }
 ]

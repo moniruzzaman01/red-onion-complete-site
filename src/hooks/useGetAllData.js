@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 
 const useGetAllData = (pathname) => {
-  const [breakfastItems, setBreakfastItems] = useState([]);
+  const [Items, setItems] = useState([]);
 
   useEffect(() => {
     fetch(`http://localhost:5000/${pathname}`)
       .then((res) => res.json())
-      .then((data) => setBreakfastItems(data));
+      .then((data) => setItems(data));
   }, [pathname]);
-  return [breakfastItems, setBreakfastItems];
+  return [Items, setItems];
 };
 
 export default useGetAllData;

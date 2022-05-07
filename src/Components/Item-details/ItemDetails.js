@@ -4,15 +4,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import slide1 from "../../images/breakfast/breakfast1.png";
 import slide2 from "../../images/breakfast/breakfast2.png";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
 
 const ItemDetails = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
   const [item, setItem] = useState({});
+  const [user] = useAuthState(auth);
 
   useEffect(() => {
-    fetch("http://localhost:5000/breakfastById", {
+    fetch("http://localhost:5000/itemById", {
       method: "post",
       headers: {
         "content-type": "application/json",
@@ -20,8 +22,39 @@ const ItemDetails = () => {
       body: JSON.stringify({ id }),
     })
       .then((res) => res.json())
-      .then((data) => setItem(data));
+      .then((data) => {
+        setItem(data);
+      });
   }, [id]);
+
+  const handleAddBtn = () => {
+    item["email"] = user.email;
+    console.log("itme", item);
+    fetch("http://localhost:5000/cart", {
+      method: "put",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(item),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  };
+
+  const handleIncrease = () => {
+    const newItem = { ...item };
+    const qnty = parseInt(item["quantity"]) || 0;
+    newItem["quantity"] = qnty + 1;
+    setItem(newItem);
+  };
+  const handleDecrease = () => {
+    const newItem = { ...item };
+    const qnty = parseInt(item["quantity"]) || 0;
+    if (qnty > 1) {
+      newItem["quantity"] = qnty - 1;
+      setItem(newItem);
+    }
+  };
 
   return (
     <div className="item-details-container container">
@@ -32,12 +65,12 @@ const ItemDetails = () => {
           <div className="price-and-qnty">
             <h3>${item.price}</h3>
             <div className="qnty">
-              <span>-</span>
+              <span onClick={handleDecrease}>-</span>
               <span>{item.quantity}</span>
-              <span>+</span>
+              <span onClick={handleIncrease}>+</span>
             </div>
           </div>
-          <button onClick={() => navigate("/order-details")}>
+          <button onClick={handleAddBtn}>
             <FontAwesomeIcon className="icon" icon={faShoppingCart} />
             Add
           </button>
