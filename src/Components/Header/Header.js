@@ -27,7 +27,6 @@ const Header = () => {
         </div>
         {authUser ? (
           <div onClick={() => signOut(auth)} className="icon">
-            {authUser.displayName?.split(" ")[0]}{" "}
             <FontAwesomeIcon icon={faSignOut} />
           </div>
         ) : (

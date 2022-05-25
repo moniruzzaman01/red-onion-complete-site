@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import slide1 from "../../images/breakfast/breakfast1.png";
 import slide2 from "../../images/breakfast/breakfast2.png";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import { toast } from "react-toastify";
@@ -13,6 +13,7 @@ const ItemDetails = () => {
   const { id } = useParams();
   const [item, setItem] = useState({});
   const [user] = useAuthState(auth);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:5000/itemById", {
@@ -26,7 +27,7 @@ const ItemDetails = () => {
       .then((data) => {
         setItem(data);
       });
-  }, [id]);
+  }, [id, navigate]);
 
   const handleAddBtn = () => {
     item["email"] = user.email;
@@ -41,9 +42,11 @@ const ItemDetails = () => {
       .then((data) => {
         if (data.modifiedCount === 1) {
           toast("item modified");
+          navigate("/order-details");
         }
         if (data.upsertedCount === 1) {
           toast("item added to cart");
+          navigate("/order-details");
         }
       });
   };

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./SignUp.css";
 import logo from "../../images/New folder/logo2.png";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
@@ -34,9 +34,11 @@ const SignUp = () => {
     event.target.reset();
   };
 
-  if (emailPassUser) {
-    navigate(from, { replace: true });
-  }
+  useEffect(() => {
+    if (emailPassUser) {
+      navigate(from, { replace: true });
+    }
+  }, [navigate, from, emailPassUser]);
 
   return (
     <div className="signup-container container">

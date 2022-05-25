@@ -10,6 +10,7 @@ import RequireAuth from "./Components/Require-auth/RequireAuth";
 import SignUp from "./Components/Sign-up/SignUp";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Payment from "./Components/Payment/Payment";
 
 function App() {
   return (
@@ -25,6 +26,14 @@ function App() {
           element={
             <RequireAuth>
               <OrderDetails />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/payment/:id"
+          element={
+            <RequireAuth>
+              <Payment />
             </RequireAuth>
           }
         ></Route>

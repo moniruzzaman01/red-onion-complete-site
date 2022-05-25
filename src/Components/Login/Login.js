@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Login.css";
 import logo from "../../images/New folder/logo2.png";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   useAuthState,
   useSignInWithEmailAndPassword,
@@ -32,9 +32,11 @@ const Login = () => {
     event.target.reset();
   };
 
-  if (user || authUser) {
-    navigate(from, { replace: true });
-  }
+  useEffect(() => {
+    if (user || authUser) {
+      navigate(from, { replace: true });
+    }
+  }, [navigate, from, authUser, user]);
 
   return (
     <div className="login-container container">

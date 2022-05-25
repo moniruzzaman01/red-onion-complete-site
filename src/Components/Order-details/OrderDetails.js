@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./OrderDetails.css";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
+import { useNavigate } from "react-router-dom";
 
 const OrderDetails = () => {
   const [user] = useAuthState(auth);
   const [items, setItems] = useState([]);
+  const navigate = useNavigate();
 
   let totalItem = 0;
   let totalFee = 0;
@@ -24,7 +26,35 @@ const OrderDetails = () => {
 
   const handleOrderForm = (event) => {
     event.preventDefault();
-    console.log("clicked");
+    const address =
+      event.target.door.value +
+      "/" +
+      event.target.road.value +
+      "/" +
+      event.target.flat.value;
+    const mobile = event.target.mobile.value;
+    const order = {
+      name: user.displayName,
+      mobile,
+      address,
+      totalAmount: grandTotal,
+    };
+    fetch(`http://localhost:5000/orders`, {
+      method: "post",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(order),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          fetch(`http://localhost:5000/cart?email=${user.email}`, {
+            method: "delete",
+          });
+          navigate(`/payment/${data.insertedId}`);
+        }
+      });
   };
 
   return (
@@ -33,9 +63,11 @@ const OrderDetails = () => {
         <div className="delivery-details">
           <h2>Edit Delivery Details</h2>
           <form onSubmit={handleOrderForm}>
+            <input type="text" value={user.displayName} disabled required />
+            <br />
             <input
               type="text"
-              name=""
+              name="door"
               id=""
               placeholder="Deliver to door"
               required
@@ -43,7 +75,7 @@ const OrderDetails = () => {
             <br />
             <input
               type="text"
-              name=""
+              name="road"
               id=""
               placeholder="107 Rd No 8"
               required
@@ -51,7 +83,7 @@ const OrderDetails = () => {
             <br />
             <input
               type="text"
-              name=""
+              name="flat"
               id=""
               placeholder="Flat, suite or floor"
               required
@@ -59,17 +91,9 @@ const OrderDetails = () => {
             <br />
             <input
               type="text"
-              name=""
+              name="mobile"
               id=""
-              placeholder="Business Name"
-              required
-            />
-            <br />
-            <input
-              type="text"
-              name=""
-              id=""
-              placeholder="Add delivery instructor"
+              placeholder="Mobile"
               required
             />
             <br />
@@ -116,7 +140,7 @@ const OrderDetails = () => {
               Subtotal: <span>${totalFee}</span>
             </p>
             <p>
-              Tax: <span>${tax}</span>
+              Tax: <span>${tax.toFixed(2)}</span>
             </p>
             {/* <p>
               Delivery Fee: <span>$0</span>

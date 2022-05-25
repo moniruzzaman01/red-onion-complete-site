@@ -1,0 +1,14 @@
+.payment-container {
+  min-height: 100vh;
+  margin-top: 40px;
+}
+.payment-info {
+  padding: 20px 50px;
+  width: fit-content;
+  border-radius: 10px;
+  margin: 20px auto;
+  box-shadow: 2px 4px 20px 1px #e4e4e4;
+}
+.payment-info p {
+  margin: 5px;
+}
