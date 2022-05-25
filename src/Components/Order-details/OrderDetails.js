@@ -49,9 +49,9 @@ const OrderDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          fetch(`http://localhost:5000/cart?email=${user.email}`, {
-            method: "delete",
-          });
+          // fetch(`http://localhost:5000/cart?email=${user.email}`, {
+          //   method: "delete",
+          // });
           navigate(`/payment/${data.insertedId}`);
         }
       });
